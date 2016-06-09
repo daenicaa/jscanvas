@@ -8,6 +8,7 @@
 		var colors = ["#0400b3" , "#FF0000", "#FFF", "#FFD821"];
 		var by = 0;
 
+
 		for(n=0; n<2; n++){//make two rectangles
 			ctx.fillStyle = colors[n];
 			ctx.fillRect (0, by, 500, 150);
@@ -28,15 +29,39 @@
 	  		wx=wx+5;//to increment left position
 	  		height-=10; //to decrement height of the vertical rectangle ot thick line
 	  	}
+	  	
 
-	  	//draw a circle
-	  	ctx.beginPath();
-		ctx.arc(50,150,30,0,2*Math.PI);
-		ctx.fillStyle = colors[3];
-		ctx.fill();
-		ctx.strokeStyle = colors[3];
-		ctx.stroke();
+		function drawStar(cx,cy,spikes,outerRadius,innerRadius){
+	      	var rot=Math.PI/2*3;
+	      	var x=cx;
+	      	var y=cy;
+	      	var step=Math.PI/spikes;
 
+	      	ctx.beginPath();
+	      	ctx.moveTo(cx,cy-outerRadius)
+	      	for(i=0;i<spikes;i++){
+	        	x=cx+Math.cos(rot)*outerRadius;
+	        	y=cy+Math.sin(rot)*outerRadius;
+	        	ctx.lineTo(x,y)
+	        	rot+=step
+
+	        	x=cx+Math.cos(rot)*innerRadius;
+	        	y=cy+Math.sin(rot)*innerRadius;
+	        	ctx.lineTo(x,y)
+	        	rot+=step
+	      	}
+
+	      	ctx.lineTo(cx,cy-outerRadius);
+	      	ctx.closePath();
+	      	ctx.lineWidth=5;
+	      	ctx.fillStyle="#FFD821";
+	      	ctx.fill();
+	    }
+
+    	document.write(drawStar(10,25,5,5,10));//top star
+		document.write(drawStar(10,275,5,5,10));//bottom star
+		document.write(drawStar(130,150,5,5,10));//right center star
+		document.write(drawStar(50,150,8,30,20));//sun
   	</script>
  </body>
 </html>
