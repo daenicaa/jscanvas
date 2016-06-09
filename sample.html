@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+ 	<body>
+ 	<canvas id="canvas" width="500" height="500"></canvas>
+  	<script>
+		var c = document.getElementById("canvas");
+		var ctx = c.getContext("2d");
+		var colors = ["#0400b3" , "#FF0000", "#FFF", "#FFD821"];
+		var by = 0;
+
+		for(n=0; n<2; n++){//make two rectangles
+			ctx.fillStyle = colors[n];
+			ctx.fillRect (0, by, 500, 150);
+			by = 150;
+		}
+
+		var haha = 30;
+		var count = 60;
+		var height = 300;
+		var wy = 0;
+		var wx = 0;
+		for(b=0; b < haha; b++){
+			for(i=0; i < count; i++){
+				ctx.fillStyle = colors[2];
+	  			ctx.fillRect (wx, wy, 5, height);
+	  		}
+	  		wy=wy+5;//to increment top position
+	  		wx=wx+5;//to increment left position
+	  		height-=10; //to decrement height of the vertical rectangle ot thick line
+	  	}
+
+	  	//draw a circle
+	  	ctx.beginPath();
+		ctx.arc(50,150,30,0,2*Math.PI);
+		ctx.fillStyle = colors[3];
+		ctx.fill();
+		ctx.strokeStyle = colors[3];
+		ctx.stroke();
+
+  	</script>
+ </body>
+</html>
