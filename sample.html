@@ -15,6 +15,14 @@
 			by = 150;
 		}
 
+		function drawBase(x,y,color){
+			for(n=0; n<2; n++){//make two rectangles
+				ctx.fillStyle = color;
+				ctx.fillRect (x, y, 500, 150);
+				//by = 150;
+			}
+		}
+
 		var haha = 30;
 		var count = 60;
 		var height = 300;
@@ -57,7 +65,7 @@
 	      	ctx.fillStyle="#FFD821";
 	      	ctx.fill();
 	    }
-
+	    
     	document.write(drawStar(10,25,5,5,10));//top star
 		document.write(drawStar(10,275,5,5,10));//bottom star
 		document.write(drawStar(130,150,5,5,10));//right center star
